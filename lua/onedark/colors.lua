@@ -1,25 +1,32 @@
-local colors = {}
+local o = vim.g.onedark_color_overrides or {}
 
---Light colors
-colors.black        = "#282c34"
-colors.dark_black   = "#21252B"
-colors.white        = "#abb2bf"
-colors.red          = "#e06c75"
-colors.dark_red     = "#be5046"
-colors.green        = "#98c379"
-colors.yellow       = "#e5c07b"
-colors.dark_yellow  = "#d19a66"
-colors.blue         = "#61afef"
-colors.purple       = "#c678dd"
-colors.cyan         = "#56b6c2"
-colors.icon_grey    = "#9da5b4"
-colors.grey         = "#5c6370" -- comment_grey
-colors.dark_grey    = "#4b5263" -- gutter_grey
-colors.menu_grey    = "#3e4452" -- visual_grey
-colors.cursor_grey  = "#2c323c"
-colors.special_grey = "#3b3048"
-colors.vertsplit    = "#181a1f"
+local colors = {
+  red            = o.red            or { gui = '#E06C75', cterm = '204',  cterm16 = '1'  },
+  dark_red       = o.dark_red       or { gui = '#BE5046', cterm = '196',  cterm16 = '9'  },
+  green          = o.green          or { gui = '#98C379', cterm = '114',  cterm16 = '2'  },
+  yellow         = o.yellow         or { gui = '#E5C07B', cterm = '180',  cterm16 = '3'  },
+  dark_yellow    = o.dark_yellow    or { gui = '#D19A66', cterm = '173',  cterm16 = '11' },
+  blue           = o.blue           or { gui = '#61AFEF', cterm = '39',   cterm16 = '4'  },
+  purple         = o.purple         or { gui = '#C678DD', cterm = '170',  cterm16 = '5'  },
+  cyan           = o.cyan           or { gui = '#56B6C2', cterm = '38',   cterm16 = '6'  },
+  white          = o.white          or { gui = '#ABB2BF', cterm = '145',  cterm16 = '7'  },
+  black          = o.black          or { gui = '#282C34', cterm = '235',  cterm16 = '0'  },
+  visual_black   = o.visual_black   or { gui = 'NONE',    cterm = 'NONE', cterm16 = '0'  },
+  comment_grey   = o.comment_grey   or { gui = '#5C6370', cterm = '59',   cterm16 = '15' },
+  gutter_fg_grey = o.gutter_fg_grey or { gui = '#4B5263', cterm = '238',  cterm16 = '15' },
+  cursor_grey    = o.cursor_grey    or { gui = '#2C323C', cterm = '236',  cterm16 = '8'  },
+  visual_grey    = o.visual_grey    or { gui = '#3E4452', cterm = '237',  cterm16 = '15' },
+  menu_grey      = o.menu_grey      or { gui = '#3E4452', cterm = '237',  cterm16 = '8'  },
+  special_grey   = o.special_grey   or { gui = '#3B4048', cterm = '238',  cterm16 = '15' },
+  vertsplit      = o.vertsplit      or { gui = '#21252B', cterm = '59',   cterm16 = '15' },
+  -- vertsplit      = o.vertsplit      or { gui = '#181A1F', cterm = '59',   cterm16 = '15' },
+}
 
-colors.missing      = "#f00"
+if (vim.g.onedark_termcolors or 256) == 16 then
+  for _, color in pairs(colors) do
+    color.cterm = color.cterm16
+    color.cterm16 = nil
+  end
+end
 
 return colors
