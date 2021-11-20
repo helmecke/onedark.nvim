@@ -564,6 +564,9 @@ h('DiagnosticSignError', { fg = red })
 h('DiagnosticSignWarn', { fg = yellow })
 h('DiagnosticSignInfo', { fg = blue })
 h('DiagnosticSignHint', { fg = white })
+h('LspReferenceRead', { fg = white, gui = 'bold', cterm='bold'})
+h('LspReferenceText', { fg = white, gui = 'bold', cterm='bold'})
+h('LspReferenceWrite', { fg = white, gui = 'bold', cterm='bold'})
 
 -- NvimTree :help nvim_tree_highlight
 h('NvimTreeSymlink', { fg = white })
