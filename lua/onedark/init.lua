@@ -606,4 +606,6 @@ h('CmpItemAbbrMatchFuzzy', { fg = blue })
 h('CmpItemKind', { fg = green })
 h('CmpItemMenu', { fg = cyan })
 
+h('NvimSurroundHighlight', { fg = black, bg = blue })
+
 vim.o.background = 'dark'
