@@ -1,11 +1,46 @@
-.PHONY: hooks
-hooks:
-	git config core.hooksPath .githooks
+PANVIMDOC_DIR = misc/panvimdoc
+PANVIMDOC_URL = https://github.com/kdheepak/panvimdoc
+PLENARY_DIR = misc/plenary
+PLENARY_URL = https://github.com/nvim-lua/plenary.nvim
+NV_VERSION := $(shell nvim --version | head -1 | grep -o '[0-9]\.[0-9]')
 
-.PHONY: fmt
-fmt:
-	stylua --glob '**/*.lua' -- lua
+all: format test docs
 
-.PHONY: pre-commit
-pre-commit:
-	stylua -c --glob '**/*.lua' -- lua
+docs: $(PANVIMDOC_DIR)
+	@cd $(PANVIMDOC_DIR) && \
+	pandoc \
+		--metadata="project:onedark.nvim" \
+		--metadata="description:Atom's iconic One Dark theme for Neovim" \
+		--metadata="toc:true" \
+		--metadata="incrementheadinglevelby:0" \
+		--metadata="treesitter:true" \
+		--lua-filter scripts/skip-blocks.lua \
+		--lua-filter scripts/include-files.lua \
+		--lua-filter scripts/remove-emojis.lua \
+		-t scripts/panvimdoc.lua \
+		../../README.md \
+		-o ../../doc/onedark.nvim.txt
+
+$(PANVIMDOC_DIR):
+	git clone --depth=1 --no-single-branch $(PANVIMDOC_URL) $(PANVIMDOC_DIR)
+	@rm -rf doc/panvimdoc/.git
+
+check:
+	stylua --check lua/ tests/ -f ./stylua.toml
+
+format:
+	stylua lua/ tests/ -f ./stylua.toml
+
+test: $(PLENARY_DIR)
+	nvim --headless --noplugin -u tests/basic_spec.vim +BasicSpec
+	nvim --headless --noplugin -u tests/config_spec.vim +ConfigSpec
+	nvim --headless --noplugin -u tests/source_spec.vim +SourceSpec
+	nvim --headless --noplugin -u tests/cache_spec.vim +CacheSpec
+	nvim --headless --noplugin -u tests/helpers_spec.vim +HelpersSpec
+# ifeq ($(NV_VERSION), 0.9)
+# 	nvim --headless -u tests/semantic_token_spec.vim +SemanticTokenSpec
+# endif
+
+$(PLENARY_DIR):
+	git clone --depth=1 --no-single-branch $(PLENARY_URL) $(PLENARY_DIR)
+	@rm -rf $(PLENARY_DIR)/.git
