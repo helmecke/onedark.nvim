@@ -4,13 +4,13 @@ local M = {}
 ---@param theme table
 ---@return table
 function M.groups(theme)
-    local config = require("onedark.config").config
+  local config = require("onedark.config").config
 
-    return {
-        BqfPreviewBorder = { fg = theme.palette.gray },
-        BqfPreviewRange = { fg = theme.palette.green },
-        BqfSign = { fg = theme.palette.purple, bold = true },
-    }
+  return {
+    BqfPreviewBorder = { fg = theme.palette.gray },
+    BqfPreviewRange = { fg = theme.palette.green },
+    BqfSign = { fg = theme.palette.purple, bold = true },
+  }
 end
 
 return M

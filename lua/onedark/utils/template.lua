@@ -32,50 +32,50 @@ Example of template :
 ---@param colors table color table to process
 ---@return table color table with the new colors
 function M.pre_render(colors)
-    colors["bright_black"] = helpers.lighten("black", 10, vim.g.colors_name)
-    colors["bright_blue"] = helpers.lighten("blue", 10, vim.g.colors_name)
-    colors["bright_cyan"] = helpers.lighten("cyan", 10, vim.g.colors_name)
-    colors["bright_gray"] = helpers.lighten("gray", 10, vim.g.colors_name)
-    colors["bright_green"] = helpers.lighten("green", 10, vim.g.colors_name)
-    colors["bright_orange"] = helpers.lighten("orange", 10, vim.g.colors_name)
-    colors["bright_purple"] = helpers.lighten("purple", 10, vim.g.colors_name)
-    colors["bright_red"] = helpers.lighten("red", 10, vim.g.colors_name)
-    colors["bright_white"] = helpers.lighten("white", 10, vim.g.colors_name)
-    colors["bright_yellow"] = helpers.lighten("yellow", 10, vim.g.colors_name)
+  colors["bright_black"] = helpers.lighten("black", 10, vim.g.colors_name)
+  colors["bright_blue"] = helpers.lighten("blue", 10, vim.g.colors_name)
+  colors["bright_cyan"] = helpers.lighten("cyan", 10, vim.g.colors_name)
+  colors["bright_gray"] = helpers.lighten("gray", 10, vim.g.colors_name)
+  colors["bright_green"] = helpers.lighten("green", 10, vim.g.colors_name)
+  colors["bright_orange"] = helpers.lighten("orange", 10, vim.g.colors_name)
+  colors["bright_purple"] = helpers.lighten("purple", 10, vim.g.colors_name)
+  colors["bright_red"] = helpers.lighten("red", 10, vim.g.colors_name)
+  colors["bright_white"] = helpers.lighten("white", 10, vim.g.colors_name)
+  colors["bright_yellow"] = helpers.lighten("yellow", 10, vim.g.colors_name)
 
-    return colors
+  return colors
 end
 
 ---Render the template
 ---return string The rendered template
 function M.render()
-    local colors = require("onedark.helpers").get_colors()
-    colors = M.pre_render(colors)
-    local rendered_template = M.template
+  local colors = require("onedark.helpers").get_colors()
+  colors = M.pre_render(colors)
+  local rendered_template = M.template
 
-    for color, hex in pairs(colors) do
-        rendered_template = string.gsub(rendered_template, "${" .. color .. "}", tostring(hex))
-    end
+  for color, hex in pairs(colors) do
+    rendered_template = string.gsub(rendered_template, "${" .. color .. "}", tostring(hex))
+  end
 
-    return rendered_template
+  return rendered_template
 end
 
 ---Open the rendered template into a new buffer
 ---@param buf_name string Name of the new buffer
 function M.show_in_buffer(buf_name)
-    local buf = vim.api.nvim_create_buf(true, true)
-    local rendered_template = M.render()
+  local buf = vim.api.nvim_create_buf(true, true)
+  local rendered_template = M.render()
 
-    local i = 0
-    for line in rendered_template:gmatch("([^\n]*)\n?") do
-        vim.api.nvim_buf_set_lines(buf, i, (i + 1), false, { line })
-        i = i + 1
-    end
+  local i = 0
+  for line in rendered_template:gmatch("([^\n]*)\n?") do
+    vim.api.nvim_buf_set_lines(buf, i, (i + 1), false, { line })
+    i = i + 1
+  end
 
-    vim.api.nvim_buf_set_option(buf, "modifiable", false)
-    vim.api.nvim_buf_set_option(buf, "filetype", M.filetype)
-    vim.api.nvim_buf_set_name(buf, buf_name)
-    vim.api.nvim_win_set_buf(0, buf)
+  vim.api.nvim_buf_set_option(buf, "modifiable", false)
+  vim.api.nvim_buf_set_option(buf, "filetype", M.filetype)
+  vim.api.nvim_buf_set_name(buf, buf_name)
+  vim.api.nvim_win_set_buf(0, buf)
 end
 
 return M

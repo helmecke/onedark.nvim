@@ -5,10 +5,14 @@ local M = {}
 ---@return table
 function M.groups(theme)
   return {
-    diffAdded = { link = "DiffAdd" },
-    diffChanged = { link = "DiffChange" },
-    diffRemoved = { link = "DiffDelete" },
-    diffLine = { link = "DiffText" },
+    diffAdded = { fg = theme.palette.green },
+    diffChanged = { fg = theme.palette.orange },
+    diffRemoved = { fg = theme.palette.red },
+    diffOldFile = { fg = theme.palette.yellow },
+    diffNewFile = { fg = theme.palette.orange },
+    diffFile = { fg = theme.palette.blue },
+    diffLine = { fg = theme.palette.comment },
+    diffIndexLine = { fg = theme.palette.magenta },
   }
 end
 

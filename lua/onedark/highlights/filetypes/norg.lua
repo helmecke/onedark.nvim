@@ -4,9 +4,10 @@ local M = {}
 ---@param theme table
 ---@return table
 function M.groups(theme)
+  local config = require("onedark.config").config
+
   return {
-    ["@operator.toml"] = { fg = theme.palette.fg },
-    ["@property.toml"] = { fg = theme.palette.purple },
+    ["@neorg.markup.bold.norg"] = { bold = true },
   }
 end
 

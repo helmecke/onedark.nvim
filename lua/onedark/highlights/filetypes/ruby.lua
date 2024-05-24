@@ -4,18 +4,18 @@ local M = {}
 ---@param theme table
 ---@return table
 function M.groups(theme)
-    local config = require("onedark.config").config
+  local config = require("onedark.config").config
 
-    return {
-        ["@function.ruby"] = { fg = theme.palette.blue, style = config.styles.functions },
-        ["@function.call.ruby"] = { fg = theme.palette.blue, style = config.styles.functions },
-        ["@include.ruby"] = { fg = theme.palette.blue, style = config.styles.keywords },
-        ["@keyword.function.ruby"] = { link = "@keyword.ruby" },
-        ["@label.ruby"] = { fg = theme.palette.red },
-        ["@parameter.ruby"] = { fg = theme.palette.fg, style = config.styles.parameters },
-        ["@punctuation.bracket.ruby"] = { fg = theme.palette.yellow },
-        ["@symbol.ruby"] = { fg = theme.palette.cyan },
-    }
+  return {
+    ["@function.ruby"] = { fg = theme.palette.blue, style = config.styles.functions },
+    ["@function.call.ruby"] = { fg = theme.palette.blue, style = config.styles.functions },
+    ["@include.ruby"] = { fg = theme.palette.blue, style = config.styles.keywords },
+    ["@keyword.function.ruby"] = { link = "@keyword.ruby" },
+    ["@label.ruby"] = { fg = theme.palette.red },
+    ["@parameter.ruby"] = { fg = theme.palette.fg, style = config.styles.parameters },
+    ["@punctuation.bracket.ruby"] = { fg = theme.palette.yellow },
+    ["@symbol.ruby"] = { fg = theme.palette.cyan },
+  }
 end
 
 return M

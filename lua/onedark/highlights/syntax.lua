@@ -47,7 +47,7 @@ function M.groups(theme)
 
     Underlined = { underline = true },
     Bold = { bold = true },
-    Ignore = { },
+    Ignore = {},
     Italic = { italic = true },
 
     Error = { fg = theme.palette.red },

@@ -5,7 +5,9 @@ local M = {}
 ---@return table
 function M.groups(theme)
   return {
-    AerialClass = { fg = theme.palette.purple },
+    IblIndent = { fg = theme.generated.level_1 },
+    IblWhitespace = { link = "Whitespace" },
+    IblScope = { fg = theme.palette.purple },
   }
 end
 

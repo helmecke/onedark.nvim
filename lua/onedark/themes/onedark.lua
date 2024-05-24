@@ -18,6 +18,10 @@ local default_colors = {
   gray = "#5c6370",
   highlight = "#e2be7d",
   comment = "#7f848e",
+  diff_add = "#31392b",
+  diff_delete = "#382b2c",
+  diff_change = "#1c3448",
+  diff_text = "#2c5372",
   none = "NONE",
 }
 
@@ -31,14 +35,17 @@ local function generate(colors)
     level_1 = colors.level_1 or color.lighten(colors.bg, 6),
     level_2 = colors.level_2 or color.darken(colors.bg, 1),
     level_3 = colors.level_3 or color.darken(colors.bg, 3),
-    level_2_active = color.lighten(color.darken(colors.bg, 1), 6)
+    level_1_active = color.lighten(colors.bg, 16),
+    level_2_active = color.lighten(color.darken(colors.bg, 1), 6),
+    level_3_active = color.darken(colors.bg, 6),
+    diff_delete_fg = color.darken(colors.red, 48),
 
-    -- cursorline = colors.cursorline or "#2d313b",
+    cursorline = colors.cursorline or color.lighten(colors.bg, 3),
     -- color_column = colors.color_column or "#2d313b",
     -- fold = colors.fold or "#30333d",
     -- line_number = colors.line_number or "#495162",
     -- indentline = colors.indentline or "#3b4048",
-    -- selection = colors.selection or "#414858",
+    selection = colors.selection or "#414858",
     -- float_bg = colors.float_bg or color.darken(colors.bg, 3),
     -- inlay_hint = colors.inlay_hint or color.darken(colors.gray, 7),
     --

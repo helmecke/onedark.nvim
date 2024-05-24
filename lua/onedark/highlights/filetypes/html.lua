@@ -4,13 +4,13 @@ local M = {}
 ---@param theme table
 ---@return table
 function M.groups(theme)
-    local config = require("onedark.config").config
+  local config = require("onedark.config").config
 
-    return {
-        ["@operator.html"] = { fg = theme.palette.fg },
-        ["@tag.attribute.html"] = { fg = theme.palette.orange, style = config.styles.tags },
-        ["@text.uri.html"] = { fg = theme.palette.green, underline = true },
-    }
+  return {
+    ["@operator.html"] = { fg = theme.palette.fg },
+    ["@tag.attribute.html"] = { fg = theme.palette.orange, style = config.styles.tags },
+    ["@text.uri.html"] = { fg = theme.palette.green, underline = true },
+  }
 end
 
 return M
