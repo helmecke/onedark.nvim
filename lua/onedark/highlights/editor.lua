@@ -70,6 +70,8 @@ function M.groups(theme)
     DiagnosticUnderlineInfo = { sp = theme.palette.blue, underline = true },
     DiagnosticUnderlineHint = { sp = theme.palette.cyan, underline = true },
     DiagnosticUnderlineOk = { sp = theme.palette.green, underline = true },
+    DiagnosticDeprecated = { strikethrough = true },
+    DiagnosticUnnecessary = { strikethrough = true },
 
     Search = { bg = theme.palette.yellow, fg = theme.palette.black },
     IncSearch = { bg = theme.palette.gray, fg = theme.palette.yellow },
