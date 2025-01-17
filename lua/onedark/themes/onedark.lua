@@ -32,15 +32,16 @@ local function generate(colors)
   local color = require("onedark.helpers")
 
   return {
-    level_1 = colors.level_1 or color.lighten(colors.bg, 6),
-    level_2 = colors.level_2 or color.darken(colors.bg, 1),
-    level_3 = colors.level_3 or color.darken(colors.bg, 3),
-    level_1_active = color.lighten(colors.bg, 16),
+    level_1 = color.lighten(colors.bg, 6),
+    level_1_active = color.lighten(colors.bg, 12),
+    level_2 = color.darken(colors.bg, 1),
     level_2_active = color.lighten(color.darken(colors.bg, 1), 6),
+    level_3 = color.darken(colors.bg, 3),
     level_3_active = color.darken(colors.bg, 6),
+
     diff_delete_fg = color.darken(colors.red, 48),
 
-    cursorline = colors.cursorline or color.lighten(colors.bg, 3),
+    cursorline = color.lighten(colors.bg, 2),
     -- color_column = colors.color_column or "#2d313b",
     -- fold = colors.fold or "#30333d",
     -- line_number = colors.line_number or "#495162",

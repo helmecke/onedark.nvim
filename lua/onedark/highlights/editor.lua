@@ -76,8 +76,8 @@ function M.groups(theme)
     Search = { bg = theme.palette.yellow, fg = theme.palette.black },
     IncSearch = { bg = theme.palette.gray, fg = theme.palette.yellow },
 
-    Pmenu = { bg = theme.generated.level_2 },
-    PmenuSel = { bg = theme.generated.level_2_active },
+    Pmenu = { bg = theme.generated.level_1 },
+    PmenuSel = { bg = theme.generated.level_1_active },
     -- PmenuExtra = {},
     -- PmenuExtraSel = {},
     -- PmenuKind = {},
@@ -97,7 +97,7 @@ function M.groups(theme)
     FoldColumn = { fg = theme.palette.gray },
     SignColumn = {},
 
-    NormalFloat = { bg = theme.palette.bg, fg = theme.palette.fg },
+    NormalFloat = { bg = theme.generated.level_1, fg = theme.palette.fg },
     FloatBorder = { fg = theme.palette.gray },
     -- FloatTitle = {},
 
